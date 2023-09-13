@@ -1,0 +1,128 @@
+- ipv6 browser pl.: [2001:A::1]
+
+OUTER
+en
+conf t
+
+ipv6 unicast-routing
+
+ip route 192.168.2.0 255.255.255.0 s0/1/0
+ip route 0.0.0.0 0.0.0.0 s0/1/1
+ip route 33.0.0.0 255.0.0.0 g0/0/0
+ipv6 route 2001:CAFE::/64 s0/1/0
+ipv6 route ::/0 s0/1/1
+
+ip nat inside source static 20.0.0.2 33.222.44.80
+
+int s0/1/0
+ipv6 enable
+ip add 10.0.0.2 255.0.0.0
+ipv6 add 2001:A::2/64
+ip nat outside
+no sh
+int s0/1/1
+ipv6 enable
+ip add 66.222.44.77 255.0.0.0
+ipv6 add 2001:BABA::1/64
+ip nat outside
+no sh
+int g0/0/0
+ipv6 enable
+ip add 20.0.0.1 255.0.0.0
+ipv6 add 2001:B::1/64
+ipv6 add FE80::1 link-local 
+ip nat inside
+no sh
+
+ip access-list extended PINGIN
+deny icmp any any echo
+permit ip any any
+ex
+ipv6 access-list PINGINv6
+deny icmp any any
+permit ipv6 any any
+int s0/1/1
+ip access-group PINGIN in
+ipv6 traffic-filter PINGINv6 in 
+
+
+
+
+INNER
+en
+conf t
+
+ipv6 unicast-routing
+
+ip route 0.0.0.0 0.0.0.0 s0/1/0
+ipv6 route ::/0 s0/1/0
+
+int s0/1/0
+ipv6 enable
+ip add 10.0.0.1 255.0.0.0
+ipv6 add 2001:A::1/64
+no sh
+int g0/0/0
+ipv6 enable
+ip add 192.168.2.1 255.255.255.0  
+ipv6 add 2001:CAFE::1/64
+ipv6 add FE80::1 link-local     
+no sh
+
+ip access-list extended SURFING
+permit tcp 192.168.2.0 0.0.0.255 any eq 80
+permit tcp 192.168.2.0 0.0.0.255 any eq 443
+permit udp 192.168.2.0 0.0.0.255 any eq 53
+permit tcp 192.168.2.0 0.0.0.255 any eq 53
+exit
+ip access-list extended BROWSING
+permit tcp any 192.168.2.0 0.0.0.255 established
+permit udp any eq 53 192.168.2.0 0.0.0.255 range 1024 5000
+ex
+
+ipv6 access-list SURFINGv6
+permit tcp 2001:CAFE::/64 any eq 80
+permit tcp 2001:CAFE::/64 any eq 443
+permit udp 2001:CAFE::/64 any eq 53
+permit tcp 2001:CAFE::/64 any eq 53
+exit
+ipv6 access-list BROWSINGv6
+permit tcp any 2001:CAFE::/64 established
+permit udp any eq 53 2001:CAFE::/64 range 1024 5000
+
+int g0/0/0
+ip access-group SURFING in
+ip access-group BROWSING out
+ipv6 traffic-filter SURFINGv6 in 
+ipv6 traffic-filter BROWSINGv6 out 
+
+
+
+
+
+ISP
+en
+conf t
+
+ipv6 unicast-routing
+
+ip route 0.0.0.0 0.0.0.0 s0/1/1
+ipv6 route ::/0 s0/1/1
+
+int s0/1/1
+ipv6 enable
+ip add 66.222.44.78 255.0.0.0
+ipv6 add 2001:BABA::2/64
+no sh
+int g0/0/0
+ipv6 enable
+ip add 192.168.1.1 255.255.255.0   
+ipv6 add 2001:FFFF::1/64  
+ipv6 add FE80::1 link-local      
+no sh
+
+
+
+
+
+
