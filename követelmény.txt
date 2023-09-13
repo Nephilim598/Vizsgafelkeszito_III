@@ -1,0 +1,57 @@
+8.4 Projektfeladat
+8.4.1 A vizsgatevénység megnevezése: Informatikai hálózat- és alkalmazás-üzemeltetés
+8.4.2 A vizsgatervékenység leírása
+A) Hálózattervezési és kivitelezési vizsgaremek
+A vizsgázóknak minimum 2, maximum 3 fős informatikai rendszer- és alkalmazás-üzemeltető
+csapatot alkotva kell a vizsgát megelőzően egy komplex informatikai rendszerfejlesztési projektet
+megvalósítaniuk. A projekt egy valós vagy elképzelt vállalat hálózatának tervezését, a hálózat egy
+működő prototípusának gyakorlati kivitelezését, valamint a prototípus működésének tesztelését
+foglalja magában.
+A vizsgaremeknek az alábbi elvárásoknak kell megfelelni:
+ a hálózati infrastruktúrának legalább 3 telephelyet vagy irodát kell lefednie
+ legalább egy telephelyen több VLAN kialakítását foglalja magában
+ tartalmaz második és harmadik rétegbeli redundáns megoldásokat
+ IPv4 és IPv6 címzési rendszert egyaránt használ
+ Vezeték nélküli hálózatot is tartalmaz
+ statikus és dinamikus forgalomirányítást egyaránt megvalósít
+ statikus és dinamikus címfordítást alkalmaz
+ WAN-összeköttetéseket is tartalmaz
+ virtuális magánhálózati kapcsolatot (VPN) is megvalósít
+ programozott hálózatkonfigurációt is használ
+ forgalomirányítón megvalósított biztonsági funkciókat tartalmaz (pl. ACL-ek)
+ hardveres tűzfaleszközt is alkalmaz
+ Minimum 1-1 Linux és Windows kiszolgálót tartalmaz, melyek legalább az alábbi
+szolgáltatásokat nyújtják:
+o Címtár (pl. Active Directory)
+o DHCP
+o DNS
+o HTTP/HTTPS
+o Fájl- és nyomtató megosztás
+o Automatizált mentés
+o Kliens számítógépekre automatizált szoftvertelepítés
+A vizsgaremek benyújtásának módja:
+A projekt teljes anyagát elektronikus formában a vizsga előtt minimum 14 nappal kell a
+vizsgabizottsághoz benyújtani. A benyújtott anyagnak tartalmaznia kell az alábbiakat:
+ a hálózat tervét, működésének leírását tartalmazó dokumentáció
+ a hálózat tesztelésének dokumentációja
+ A prototípus működésének, tesztelésének dokumentálása egy 2-5 perc hosszúságú
+videóval
+A vizsgafeladat során a vizsgázó gyakorlati bemutatóval összekapcsolt szóbeli előadás
+formájában mutatja be a
+ a hálózat tervezését
+ műszaki megvalósítását
+ működésének bemutatását
+ a csapaton belüli munkamegosztást, a csapatban betöltött szerepét, a fejlesztés során
+használt projektszervezési eszközöket. 
+22
+A fentieken túl 2-3 perces angol nyelven tartott szóbeli előadás formájában összefoglalót ad
+a projektről, valamint szükség esetén angolul válaszol a vizsgáztató maximum 2-3 tisztázó
+jellegű kérdésére.
+Amennyiben a munkacsapat más tagjai is azonos csoportban vizsgáznak, akkor a bemutatót
+közösen is megtarthatják, de ebben az esetben is biztosítani kell, hogy minden vizsgázó
+egyenlő arányban vegyen részt a bemutatóban, illetve minden vizsgázónak önállóan kell
+bemutatnia a saját feladatrészét magyarul és angolul egyaránt.
+A vizsgaremek elkészítésére rendelkezésre álló idő:
+A vizsgaremeket a záróvizsga tanévében kell a vizsgázónak elkészítenie.
+A vizsgaremek bemutatására és megvédésére maximum 30 perc áll a vizsgázó
+rendelkezésére.
